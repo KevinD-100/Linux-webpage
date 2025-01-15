@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Commands Showcase</title>
+    
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            height: 100%;
+            display: flex;
+            flex-direction:column;
+            min-height: 100vh;
+            background: linear-gradient(to bottom right, #6A5ACD, #9370DB);
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        header {
+            background-image: url("image2.jpg");
+            background-color: #4B0082;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            color: #fff;
+            padding: 2rem;
+            margin-top: -2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        main{
+            flex: 1;
+        }
+        header img {
+            max-width: 25%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        header p {
+            font-size: 1.7rem;
+            font-weight: lighter;
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        nav {
+            background: linear-gradient(135deg, #6A5ACD, #9370DB);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.6rem 1.3rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: #BA55D3;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        nav a:hover {
+            background-color: #8A2BE2;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+        }
+        nav a:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        section {
+            display: none;
+            padding: 2rem;
+            margin: 1.5rem auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            max-width: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        section h2 {
+            color: #4B0082;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+        #sort img {
+            max-width: 50%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #awk img {
+            max-width: 50%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #sed img {
+            max-width: 50%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #cut img {
+            max-width: 50%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #tr img {
+            max-width: 70%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #echo img {
+            max-width: 50%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #export img {
+            max-width: 70%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #history img {
+            max-width: 50%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #rsync img {
+            max-width: 50%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #screen img {
+            max-width: 80%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        #uniq img {
+            max-width: 50%; /* Adjust the percentage to set the desired size */
+            display: block;
+            margin: 1rem auto; /* Center the image */
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            background-color: #4B0082;
+            color: #fff;
+            padding: 1rem;
+            margin-top: auto;
+            font-size: 1rem;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        footer p {
+            margin: 0;
+        }
+        footer span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="image3.png" alt="Linux Commands Image">
+        <h1>Linux Commands</h1>
+        <p>Learn about the basic functions and uses of essential Linux commands</p>
+    </header>
+    <nav>
+        <a href="javascript:void(0);" onclick="toggleSection('sort')"><i class="fas fa-sort"></i> sort</a>
+        <a href="javascript:void(0);" onclick="toggleSection('awk')"><i class="fas fa-cogs"></i> awk</a>
+        <a href="javascript:void(0);" onclick="toggleSection('sed')"><i class="fas fa-pencil-alt"></i> sed</a>
+        <a href="javascript:void(0);" onclick="toggleSection('cut')"><i class="fas fa-cut"></i> cut</a>
+        <a href="javascript:void(0);" onclick="toggleSection('tr')"><i class="fas fa-random"></i> tr</a>
+        <a href="javascript:void(0);" onclick="toggleSection('echo')"><i class="fas fa-broadcast-tower"></i> echo</a>
+        <a href="javascript:void(0);" onclick="toggleSection('export')"><i class="fas fa-arrow-right"></i> export</a>
+        <a href="javascript:void(0);" onclick="toggleSection('history')"><i class="fas fa-history"></i> history</a>
+        <a href="javascript:void(0);" onclick="toggleSection('rsync')"><i class="fas fa-sync-alt"></i> rsync</a>
+        <a href="javascript:void(0);" onclick="toggleSection('screen')"><i class="fas fa-tv"></i> screen</a>
+        <a href="javascript:void(0);" onclick="toggleSection('uniq')"><i class="fas fa-check"></i> uniq</a>
+    
+        <!-- Add more buttons for other commands here -->
+    </nav>
+    <main>
+        <section id="sort">
+            <h2>sort Command</h2>
+            <p><strong>Description:</strong> The <code>sort</code> command sorts lines of text files.</p>
+            <p><strong>Purpose:</strong> Organizes data alphabetically, numerically, or by other criteria.</p>
+            <p><strong>Usage:</strong> <code>sort [options] file.txt</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss1.jpg.png" alt="Sort Command Example" id="sortImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+        <section id="awk">
+            <h2>awk Command</h2>
+            <p><strong>Description:</strong> The <code>awk</code> command processes and analyzes text files.</p>
+            <p><strong>Purpose:</strong> Allows pattern scanning and text manipulation.</p>
+            <p><strong>Usage:</strong> <code>awk 'pattern {action}' file.txt</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss2.jpg.png" alt="Example of awk command to print first column" id="awkImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        <section id="sed">
+            <h2>sed Command</h2>
+            <p><strong>Description:</strong> The <code>sed</code> command is used for stream editing and modifying files.</p>
+            <p><strong>Purpose:</strong> Can perform operations like find and replace on text files.</p>
+            <p><strong>Usage:</strong> <code>sed 's/old/new/g' file.txt</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss3.jpg.png" alt="Example of sed command to replace text" id="sedImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        <section id="cut">
+            <h2>cut Command</h2>
+            <p><strong>Description:</strong> The <code>cut</code> command removes sections from each line of files.</p>
+            <p><strong>Purpose:</strong> Used to extract specific columns or fields from a file.</p>
+            <p><strong>Usage:</strong> <code>cut -d ' ' -f 1 file.txt</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss4.jpg.png" alt="Example of cut command to extract fields" id="cutImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        <section id="tr">
+            <h2>tr Command</h2>
+            <p><strong>Description:</strong> The <code>tr</code> command translates or deletes characters from the input.</p>
+            <p><strong>Purpose:</strong> Can be used for character substitution or removing characters from the input.</p>
+            <p><strong>Usage:</strong> <code>tr 'a-z' 'A-Z'</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss5.jpg.png" alt="Example of tr command to convert text to uppercase" id="trImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        <section id="echo">
+            <h2>echo Command</h2>
+            <p><strong>Description:</strong> The <code>echo</code> command is used to display a line of text or a variable's value.</p>
+            <p><strong>Purpose:</strong> Output text or variables to the terminal or a file.</p>
+            <p><strong>Usage:</strong> <code>echo [text]</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss6.jpg.png" alt="Example of echo command to to display a line of text" id="echoImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        <section id="export">
+            <h2>export Command</h2>
+            <p><strong>Description:</strong> The <code>export</code> command sets environment variables.</p>
+            <p><strong>Purpose:</strong> Sets variables that can be accessed by processes spawned from the shell.</p>
+            <p><strong>Usage:</strong> <code>export VARIABLE_NAME=value</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss7.jpg.png" alt="Example of export command can be accessed by processes spawned from the shell" id="exportImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        <section id="history">
+            <h2>history Command</h2>
+            <p><strong>Description:</strong> The <code>history</code> command displays the history of commands executed in the current session.</p>
+            <p><strong>Purpose:</strong> View and reuse previously executed commands.</p>
+            <p><strong>Usage:</strong> <code>history</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss8.jpg.png" alt="Example of history command to view and reuse previously executed commands" id="historyImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        <section id="rsync">
+            <h2>rsync Command</h2>
+            <p><strong>Description:</strong> The <code>rsync</code> command synchronizes files and directories between two locations.</p>
+            <p><strong>Purpose:</strong> Efficiently copies files between systems, supporting incremental backups.</p>
+            <p><strong>Usage:</strong> <code>rsync -av source destination</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss9.jpg.png" alt="Example of echo command to to display a line of text" id="rsyncImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        <section id="screen">
+            <h2>screen Command</h2>
+            <p><strong>Description:</strong> The <code>screen</code> command allows for managing multiple terminal sessions.</p>
+            <p><strong>Purpose:</strong> Enables session management, especially useful for long-running tasks.</p>
+            <p><strong>Usage:</strong> <code>screen</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss10.jpg" alt="Example of echo command to to display a line of text" id="screenImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        <section id="uniq">
+            <h2>uniq Command</h2>
+            <p><strong>Description:</strong> The <code>uniq</code> command filters adjacent matching lines from input.</p>
+            <p><strong>Purpose:</strong> Removes duplicate lines from a file or input stream.</p>
+            <p><strong>Usage:</strong> <code>uniq file.txt</code></p>
+            <p><strong>Example:</strong></p>
+            <img src="ss11.jpg.png" alt="Example of echo command to remove duplicate lines from a file" id="uniqImage" style="display: none; width: 100%; margin-top: 1rem; border-radius: 10px;">
+        </section>
+
+        
+    </main>
+
+    <script>
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+
+            if (section.style.display === 'block') {
+                section.style.display = 'none';
+
+                if (sectionId === 'sort') {
+                    document.getElementById('sortImage').style.display = 'none';
+                }
+                if (sectionId === 'awk') {
+                    document.getElementById('awkImage').style.display = 'block';
+                }
+                if (sectionId === 'sed') {
+                    document.getElementById('sedImage').style.display = 'block';
+                }
+                if (sectionId === 'cut') {
+                    document.getElementById('cutImage').style.display = 'block';
+                }
+                if (sectionId === 'tr') {
+                    document.getElementById('trImage').style.display = 'block';
+                }
+                if (sectionId === 'echo') {
+                    document.getElementById('echoImage').style.display = 'block';
+                }
+                if (sectionId === 'export') {
+                    document.getElementById('exportImage').style.display = 'block';
+                }
+                if (sectionId === 'history') {
+                    document.getElementById('historyImage').style.display = 'block';
+                }
+                if (sectionId === 'rsync') {
+                    document.getElementById('rsyncImage').style.display = 'block';
+                }
+                if (sectionId === 'screen') {
+                    document.getElementById('screenImage').style.display = 'block';
+                }
+                if (sectionId === 'uniq') {
+                    document.getElementById('uniqImage').style.display = 'block';
+                }
+
+            } else {
+                const sections = document.querySelectorAll('section');
+                sections.forEach(sec => sec.style.display = 'none');
+
+                section.style.display = 'block';
+
+                if (sectionId === 'sort') {
+                    document.getElementById('sortImage').style.display = 'block';
+                }
+                if (sectionId === 'awk') {
+                    document.getElementById('awkImage').style.display = 'block';
+                }
+                if (sectionId === 'sed') {
+                    document.getElementById('sedImage').style.display = 'block';
+                }
+                if (sectionId === 'cut') {
+                    document.getElementById('cutImage').style.display = 'block';
+                }
+                if (sectionId === 'tr') {
+                    document.getElementById('trImage').style.display = 'block';
+                }
+                if (sectionId === 'echo') {
+                    document.getElementById('echoImage').style.display = 'block';
+                }
+                if (sectionId === 'export') {
+                    document.getElementById('exportImage').style.display = 'block';
+                }
+                if (sectionId === 'history') {
+                    document.getElementById('historyImage').style.display = 'block';
+                }
+                if (sectionId === 'rsync') {
+                    document.getElementById('rsyncImage').style.display = 'block';
+                }
+                if (sectionId === 'screen') {
+                    document.getElementById('screenImage').style.display = 'block';
+                }
+                if (sectionId === 'uniq') {
+                    document.getElementById('uniqImage').style.display = 'block';
+                }
+                
+            }
+        }
+    </script>
+    <footer>
+        <p>&copy; kd All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
